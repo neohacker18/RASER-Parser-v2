@@ -6,6 +6,7 @@ import sys,fitz
 import textract
 from nltk.tokenize import word_tokenize
 from itertools import chain
+import re
 # nltk.download('stopwords')
 
 def textPreprocessor(featureRecord):
@@ -57,3 +58,13 @@ def Preprocessfile(filename):
   # print(x)
   res=" ".join(chain.from_iterable(x))
   return res
+
+def cleanText(resumeText):
+    resumeText = re.sub('http\S+\s*', ' ', resumeText)
+    resumeText = re.sub('RT|cc', ' ', resumeText)
+    resumeText = re.sub('#\S+', '', resumeText)
+    resumeText = re.sub('@\S+', '  ', resumeText)
+    resumeText = re.sub('[%s]' % re.escape("""!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"""), ' ', resumeText)
+    resumeText = re.sub(r'[^\x00-\x7f]',r' ', resumeText)
+    resumeText = re.sub('\s+', ' ', resumeText)
+    return resumeText
