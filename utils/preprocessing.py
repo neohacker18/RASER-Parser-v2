@@ -68,3 +68,12 @@ def cleanText(resumeText):
     resumeText = re.sub(r'[^\x00-\x7f]',r' ', resumeText)
     resumeText = re.sub('\s+', ' ', resumeText)
     return resumeText
+
+
+def TextPreprocessor(fname):
+  doc=fitz.open(fname)
+  text=""
+  for page in doc:
+    text=text+str(page.get_text())
+  ' '.join(text.split())
+  return text
