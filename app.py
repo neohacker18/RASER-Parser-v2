@@ -79,8 +79,7 @@ class GetRankedResumes(Resource):
 
     def process_resume(self):
         resume_extractor.process_pdfs("./test/excel/resumes.xlsx")
-        res = resume_scorer.Score_Resumes("./test/resume_data","./test/cv_data/jd.pdf")
-        # test=[{"id": 4, "name": "Tushar_Jha4.pdf", "dms": 117.9, "sss": 117.9, "ts": 16.5}, {"id": 1, "name": "Aryan__Sethi1.pdf", "dms": 117.9, "sss": 101.8, "ts": 14.25}, {"id": 3, "name": "Nayra_Sethi2.pdf", "dms": 117.9, "sss": 100.0, "ts": 14.0}, {"id": 2, "name": "Gunika_Dhingra3.pdf", "dms": 117.9, "sss": 80.4, "ts": 11.25}]
+        res = resume_scorer.Score_Resumes("./test/resume_data","./test/cv_data/jd1.pdf")
         return res
 
     def post(self):
